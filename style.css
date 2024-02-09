@@ -1,0 +1,299 @@
+body{background-color: whitesmoke;}
+#account-pane{
+    width: 20%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    border: 1px solid black;
+    background-color: linen;
+    box-shadow: 0 0 5px gray;
+    border-radius: 0 20px 20px 0;
+}
+#equipment-pane{
+    width: 20%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+#main-pane{
+    width: 50%;
+    height: fit-content;
+    margin: 0 auto;
+    border: 1px solid black;
+    background-color: rgb(250, 240, 230);
+    border-radius: 20px;
+    box-shadow: 0 0 5px gray;
+    text-align: center;
+}
+#balance{
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+    border-top:5px double black;
+    text-align: center;
+    font-size: 25px;
+    vertical-align: middle;
+}
+#ml-wrap{
+    height: calc(100% - 50px);
+    width: stretch;
+    display: flex;
+    flex-direction: column-reverse;
+    overflow-y: auto;
+    
+}
+#money-list{
+    font-size: 21px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.income{
+    color: green;
+    list-style-type: "\002B";
+}
+.expense{
+    color: red;
+    list-style-type: "\2212";
+}
+.equip-wrap{
+    height: 20%;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 20px 0 0 20px;
+}
+
+
+.back{
+    background-color: rgba(229, 185, 9, 0.337);
+}
+.dozer{
+    background-color: rgba(107, 133, 72, 0.337);
+}
+.exca{
+    background-color: rgba(197, 43, 31, 0.337);
+}
+.grade{
+    background-color: rgba(69, 122, 166, 0.337);
+}
+.scrape{
+    background-color: rgba(92, 42, 79, 0.337);
+}
+.equip-wrap img{
+    height: 40px;
+    display: block;
+    width: fit-content;
+    margin: 4px auto 0 auto;
+}
+.equip-title, .owned-wrap{
+    margin: 0;
+    font-size: 22px;
+    font-weight: 500;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.buy-button, .double{
+    background-color: #ffffff87;
+    border: none;
+    width: 45%;
+    border-radius: 19px;
+    font-weight: 600;
+    padding: 10px;
+    margin: 0 4px 4px 4px;
+    display: inline-block;
+    position: relative;
+}
+.buy-button[alt]:hover::after, .double[alt]:hover::after {
+    content: attr(alt);
+    position: absolute;
+    border-radius: 10px;
+    top: 105%;
+    right: 0;
+    background-color: linen;
+    font-size: 20px;
+    padding: 5px;
+    z-index: 100;
+    width: 300px;
+    border: 1px solid black;
+    box-shadow: 0 0 5px gray;
+    font-weight: 500;
+  }
+.scrape-buy[alt]:hover::after {
+    top: -249%;
+}
+.scrape-dob[alt]:hover::after{
+    top: -60%;
+    right: 102%;
+    height: fit-content;
+}
+.buy-button:hover, .double:hover{
+    padding: 9px;
+    border: 1px solid black;
+    background-color: #ffffffA7;
+}
+.buy-button:active, .double:active{
+    border: 2px solid black;
+    padding: 8px;
+    background-color: #ffffff31;
+}
+.active{
+    border: 1px solid black;
+    padding: 8px;
+    background-color: #ffffffA7;
+    font-size: 12px;
+    box-shadow: 0 0 10px 0 inset rgb(191, 190, 190);
+
+}
+.sect{
+    height: 260px;
+    border: 1px solid black;
+    position: relative;
+    margin: 20px;
+    border-radius: 30px;
+    z-index: 50;
+    box-shadow: 0 0 5px gray inset;
+}
+#job-equip, #job-expense, .custom input, #new-amount{
+    width: 180px;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 19px;
+    padding: 2px;
+    background-color: lightyellow;
+    border: 1px solid black;
+    height: 28px;
+    
+}
+#dice-wrap{
+    width: 180px;
+    height: 55px;
+    text-align: center;
+    
+}
+#job-expense, #job-equip, #dice-wrap{
+    position: relative;
+    display: inline-block;
+    right: 10%;
+}
+#dice-roll{
+    width: 60px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 35px;
+    text-align: center;
+    background-color: lightyellow;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 2px 0 2px 10px;
+    border: 1px solid black;
+}
+
+#new-job label{
+    font-size: 19px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 550;
+    width: 265px;
+    padding: 4px 0;
+    text-align: right;
+    margin: 16px 5px 16px 15%; 
+    position: relative;
+    right: 10%;
+    display: inline-block;
+    height: 20px;
+}
+.custom label, #loan label{
+    font-size: 22px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 550;
+    margin-left: -15px;
+}
+#custom-expense label{
+    margin-left: -30px;
+}
+.custom{
+    height: 150px;
+}
+.custom input{
+    margin-top: 20px;
+}
+.submit{
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 19px;
+    border-radius: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 5px 7px;
+    border: 1px solid black;
+    background-color: lightyellow;
+}
+.submit:hover{
+    border-bottom: 2px solid black;
+}
+.submit:active{
+    border-top: 2px solid black;
+    border-bottom: 1px solid black;
+
+}
+.sect legend{
+    font-size: 19px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    background-color: lightyellow;
+    padding: 5px 7px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+#alert-box{
+    position: fixed;
+    left: 50%;
+    top: -10%;
+    transform: translateX(-50%);
+    z-index: 100;
+    background-color: linen;
+    padding: 5px;
+    font-size: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    transition-duration: 1s;
+    box-shadow: 0 0 5px gray;
+    font-weight: 500;
+}
+#current-loan{
+    height: 22px;
+    width: fit-content;
+    margin: 10px auto;
+    font-size: 22px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 550;
+}
+#loan{
+    height: 170px;
+}
+
+#loan .submit{
+    display: inline;
+    left: 0;
+    bottom: 0;
+    position: relative;
+    transform: translateX(0);
+}
+#loan-buttons{
+    display: flex;
+    justify-content: space-between;
+    width: 320px;
+
+    height: 35px;
+    margin: 23px auto 0 auto;
+}

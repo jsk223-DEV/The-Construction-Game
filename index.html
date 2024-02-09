@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>TCGAME</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+</head>
+
+<body>
+    <div id="alert-box">
+        
+    </div>
+    <section id="account-pane">
+        <div id="ml-wrap">
+            <ul id="money-list">
+            </ul>
+        </div>
+
+        <div id="balance"></div>
+    </section>
+    <section id="equipment-pane">
+        <div class="equip-wrap back">
+            <div>
+                <img src="images/backhoe-icon.png">
+                <p class="equip-title">Backhoe</p>
+            </div>
+            <p class="owned-wrap">Owned: <span id="back-owned">0</span>
+                <span style="display: none;" id="dback-ind"> &times;2</span>
+            </p>
+            <div class="buttons">
+                <button class="double unactive" onclick="toggleDouble(this, 'back')" alt="Double your backhoes for this year.">DOUBLE</button>
+                <button class="buy-button" onclick="backhoe.buyOne()" alt="This will cost $50,000. If you do not have enough money you may take out a loan.">BUY ONE</button>
+            </div>
+        </div>
+        <div class="equip-wrap dozer">
+            <div>
+                <img src="images/dozer-icon.png">
+                <p class="equip-title">Dozer</p>
+            </div>
+            <p class="owned-wrap">Owned: <span id="dozer-owned">0</span>
+                <span style="display: none;" id="ddozer-ind"> &times;2</span>
+            </p>
+            <div class="buttons">
+                <button class="double unactive" onclick="toggleDouble(this, 'dozer')" alt="Double your dozers for this year.">DOUBLE</button>
+                <button class="buy-button" onclick="dozer.buyOne()" alt="This will cost $75,000. If you do not have enough money you may take out a loan.">BUY ONE</button>
+            </div>
+
+        </div>
+        <div class="equip-wrap exca">
+            <div>
+                <img src="images/excavator-icon.png">
+                <p class="equip-title">Excavator</p>
+            </div>
+            <p class="owned-wrap">Owned: <span id="exca-owned">0</span>
+                <span style="display: none;" id="dexca-ind"> &times;2</span>
+            </p>
+            <div class="buttons">
+                <button class="double  unactive" onclick="toggleDouble(this, 'exca')" alt="Double your excavators for this year.">DOUBLE</button>
+                <button class="buy-button" onclick="excavator.buyOne()" alt="This will cost $100,000. If you do not have enough money you may take out a loan.">BUY ONE</button>
+            </div>
+        </div>
+        <div class="equip-wrap grade">
+            <div>
+                <img src="images/grader-icon.png">
+                <p class="equip-title">Grader</p>
+            </div>
+            <p class="owned-wrap">Owned: <span id="grade-owned">0</span>
+                <span style="display: none;" id="dgrade-ind"> &times;2</span>
+            </p>
+            <div class="buttons">
+                <button class="double unactive" onclick="toggleDouble(this, 'grade')" alt="Double your graders for this year.">DOUBLE</button>
+                <button class="buy-button" onclick="grader.buyOne()" alt="This will cost $150,000. If you do not have enough money you may take out a loan.">BUY ONE</button>
+            </div>
+
+        </div>
+        <div class="equip-wrap scrape">
+            <div>
+                <img src="images/scraper-icon.png">
+                <p class="equip-title">Scraper</p>
+            </div>
+            <p class="owned-wrap">Owned: <span id="scrape-owned">0</span>
+                <span style="display: none;" id="dscrape-ind"> &times;2</span>
+            </p>
+            <div class="buttons">
+                <button class="double scrape-dob unactive" onclick="toggleDouble(this, 'scrape')" alt="Double your scrapers for this year.">DOUBLE</button>
+                <button class="buy-button scrape-buy" onclick="scraper.buyOne()" alt="This will cost $200,000. If you do not have enough money you may take out a loan.">BUY ONE</button>
+            </div>
+
+        </div>
+    </section>
+    <section id="main-pane">
+        <fieldset id="new-job" class="sect">
+            <legend>New Job</legend>
+            <label for="job-equip">Which Equipment: </label>
+            <select id="job-equip">
+                <option value="back">Backhoe</option>
+                <option value="dozer">Dozer</option>
+                <option value="exca">Excavator</option>
+                <option value="grade">Grader</option>
+                <option value="scrape">Scraper</option>
+            </select><br>
+            <label for="dice-roll" id="dice-lab">Dice Roll: </label>
+            <div id="dice-wrap">
+                <input type="number" min="1" max="12" value="1" id="dice-roll" >
+            </div><br>
+            <label for="job-expense">Expense for this job: </label>
+            <input type="number" id="job-expense" step="1000">
+            <button id="submit-job" onclick="submitJob()" class="submit">Submit Job</button>
+        </fieldset>
+        <fieldset id="loan" class="sect">
+            <legend>Loan</legend>
+            <p id="current-loan">$<span id="current-amount"></span></p>
+            <label for="new-amount">$</label>
+            <input type="number" step="1000" id="new-amount" value=""><br>
+            <div id="loan-buttons">
+                <button class="submit" onclick="addLoan()">Borrow Amount</button>
+                <button class="submit" onclick="decreaseLoan()">Pay Amount</button>
+            </div>
+        </fieldset>
+        <fieldset id="custom-income" class="sect custom">
+            <legend>Custom Income</legend>
+            <label for="cust-inc-amount">$</label>
+            <input type="number" step="1000" id="cust-inc-amount" value="">
+            <button onclick="customIncome()" class="submit">Submit Amount</button>
+        </fieldset>
+        <fieldset id="custom-expense" class="sect custom">
+            <legend>Custom Expense</legend>
+            <label for="cust-exp-amount">&minus;$</label>
+            <input type="number" step="1000" id="cust-exp-amount" value="">
+            <button onclick="customExpense()" class="submit">Submit Amount</button>
+        </fieldset>
+    </section>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
