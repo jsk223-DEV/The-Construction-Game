@@ -6,7 +6,10 @@ body{background-color: whitesmoke;}
     left: 0;
     bottom: 0;
     border: 1px solid black;
-    background-color: linen;
+    background-image: url(images/main-back.jpg);
+    background-size: 500% 100%;
+    background-position: 50%;
+    background-repeat: no-repeat;
     box-shadow: 0 0 5px gray;
     border-radius: 0 20px 20px 0;
 }
@@ -24,20 +27,23 @@ body{background-color: whitesmoke;}
     height: fit-content;
     margin: 0 auto;
     border: 1px solid black;
-    background-color: rgb(250, 240, 230);
+    background-image: url(images/main-back.jpg);
     border-radius: 20px;
-    box-shadow: 0 0 5px gray;
+    box-shadow: 0 0 10px gray;
     text-align: center;
+    z-index: 5;
 }
 #balance{
     width: 100%;
     height: 40px;
     position: absolute;
     bottom: 0;
-    border-top:5px double black;
+    border-top:10px double black;
     text-align: center;
     font-size: 25px;
     vertical-align: middle;
+    color: white;
+
 }
 #ml-wrap{
     height: calc(100% - 50px);
@@ -52,6 +58,9 @@ body{background-color: whitesmoke;}
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
+    background-color: rgba(197, 194, 191, 0.719);
+    padding: 15px;
+    border-radius: 10px;
 
 }
 
@@ -113,8 +122,11 @@ body{background-color: whitesmoke;}
     margin: 0 4px 4px 4px;
     display: inline-block;
     position: relative;
+    z-index: 20;
 }
-.buy-button[alt]:hover::after, .double[alt]:hover::after {
+.buy-button[alt]:hover::after, 
+.double[alt]:hover::after,
+#options .submit[alt]:hover::after {
     content: attr(alt);
     position: absolute;
     border-radius: 10px;
@@ -123,7 +135,7 @@ body{background-color: whitesmoke;}
     background-color: linen;
     font-size: 20px;
     padding: 5px;
-    z-index: 100;
+    z-index: 1000;
     width: 300px;
     border: 1px solid black;
     box-shadow: 0 0 5px gray;
@@ -155,14 +167,15 @@ body{background-color: whitesmoke;}
     box-shadow: 0 0 10px 0 inset rgb(191, 190, 190);
 
 }
-.sect{
+.sect, #options{
     height: 260px;
     border: 1px solid black;
+    background-color: rgba(197, 194, 191, 0.719);
     position: relative;
     margin: 20px;
     border-radius: 30px;
-    z-index: 50;
-    box-shadow: 0 0 5px gray inset;
+    z-index: 10;
+    box-shadow: 0 0 10px white inset;
 }
 #job-equip, #job-expense, .custom input, #new-amount{
     width: 180px;
@@ -170,7 +183,7 @@ body{background-color: whitesmoke;}
     font-family: 'Courier New', Courier, monospace;
     font-size: 19px;
     padding: 2px;
-    background-color: lightyellow;
+    background-color: rgb(210, 210, 202);
     border: 1px solid black;
     height: 28px;
     
@@ -192,7 +205,7 @@ body{background-color: whitesmoke;}
     border-radius: 10px;
     font-size: 35px;
     text-align: center;
-    background-color: lightyellow;
+    background-color: rgb(210, 210, 202);
     font-family: 'Courier New', Courier, monospace;
     padding: 2px 0 2px 10px;
     border: 1px solid black;
@@ -236,7 +249,7 @@ body{background-color: whitesmoke;}
     font-family: 'Courier New', Courier, monospace;
     padding: 5px 7px;
     border: 1px solid black;
-    background-color: lightyellow;
+    background-color: rgb(210, 210, 202);
 }
 .submit:hover{
     border-bottom: 2px solid black;
@@ -250,7 +263,7 @@ body{background-color: whitesmoke;}
     font-size: 19px;
     font-family: 'Courier New', Courier, monospace;
     font-weight: 600;
-    background-color: lightyellow;
+    background-color: rgb(210, 210, 202);
     padding: 5px 7px;
     border-radius: 10px;
     border: 1px solid black;
@@ -297,3 +310,9 @@ body{background-color: whitesmoke;}
     height: 35px;
     margin: 23px auto 0 auto;
 }
+#options{
+    padding: 10px;
+    height: 35px;
+}
+
+

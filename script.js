@@ -1,21 +1,13 @@
 
-localStorage.clear();
-localStorage.setItem('balance', 0);
-addIncome(300_000, 'Game Start');
+
 function displayBalance(amount) {
     let result = 0;
     const total = document.getElementById('balance');
     result = Number(amount) + Number(localStorage.getItem('balance'));
     localStorage.setItem('balance', result);
     let rResult = commify(result);
-    if(rResult.charAt(0) == '-'){
-        rResult = rResult.slice(1);
-        total.innerHTML = '-$' + rResult;
-        total.style.color = 'red';
-    }else{
-        total.innerHTML = '$' + rResult;
-        total.style.color = 'green';
-    }
+    total.innerHTML = '$' + rResult;
+    
 }
 function commify(res) {
     res = parseFloat(res).toFixed(2);
@@ -76,8 +68,8 @@ function commify(res) {
         displayBalance(num);
     }
     
-    const backhoe = {
-        amountOwned: 2,
+const backhoe = {
+        amountOwned: 0,
         price: 50_000,
         base: 1_000,
         buyOne: function(){
@@ -100,7 +92,7 @@ function commify(res) {
     }
 }
 const dozer = {
-    amountOwned: 1,
+    amountOwned: 0,
     price: 75_000,
     base: 2_000,
     buyOne: function(){
@@ -193,8 +185,6 @@ const scraper = {
     }
 }
 
-document.getElementById('back-owned').innerHTML = backhoe.amountOwned;
-document.getElementById('dozer-owned').innerHTML = dozer.amountOwned;
 
 function toggleDouble(button, whichEquip){
     if(button.classList.contains('unactive')){
@@ -345,8 +335,6 @@ function customExpense(){
     input.value = '';
 }
 
-localStorage.setItem('loanAmount', 0);
-document.getElementById('current-amount').innerHTML = localStorage.getItem('loanAmount');
 function addLoan(){
     const newAmount = document.getElementById('new-amount');
     let newAmountVal = Number(newAmount.value);
@@ -417,5 +405,24 @@ function alertBox(message){
     setTimeout(() => {alertEle.style.top = '-10%';}, 3000)
 }
 
+function newGame(){
+    localStorage.clear();
+    localStorage.setItem('balance', 0);
+    localStorage.setItem('loanAmount', 0);
+    document.getElementById('current-amount').innerHTML = localStorage.getItem('loanAmount');
+    backhoe.amountOwned = 2;
+    dozer.amountOwned = 1;
+    excavator.amountOwned = 0;
+    grader.amountOwned = 0;
+    scraper.amountOwned = 0;
+    document.getElementById('back-owned').innerHTML = backhoe.amountOwned;
+    document.getElementById('dozer-owned').innerHTML = dozer.amountOwned;
+    document.getElementById('exca-owned').innerHTML = excavator.amountOwned;
+    document.getElementById('grade-owned').innerHTML = grader.amountOwned;
+    document.getElementById('scrape-owned').innerHTML = scraper.amountOwned;
+    document.getElementById('money-list').innerHTML = '';
+    addIncome(300_000, 'Game Start');
+}
+newGame();
 
 
