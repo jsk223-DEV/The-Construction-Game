@@ -510,12 +510,20 @@ function newGame() {
     addIncome(100_000, 'Game Start');
 }
 
-if(window.navigator.userAgentData.mobile){
+// if(window.navigator.userAgentData.mobile){
+
+// }else{
+//     document.body.style.overflow = 'auto';
+//     document.getElementById('mobile').style.display = 'none';
+// }
+// function isMobile() {
+//     var index = navigator.userAgent.indexOf("Mobile");
+//     return (index > -1);
+//   }
+
+if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){
     document.body.style.overflow = 'hidden';
     document.getElementById('mobile').style.display = 'block';
-}else{
-    document.body.style.overflow = 'auto';
-    document.getElementById('mobile').style.display = 'none';
 }
 newGame();
 

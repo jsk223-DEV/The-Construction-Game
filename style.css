@@ -3,7 +3,24 @@ html {
     min-height: 555px;
 
 }
-
+#mobile{
+    position: absolute;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 350px;
+    display: none;
+}
+/* @media screen and (max-width:1025px) {
+    #mobile{
+        display: block;
+    }
+ } */
 body {
     background-color: whitesmoke;
     overflow: auto;
@@ -371,17 +388,4 @@ body {
 #options .submit {
     font-weight: 600;
     margin: 0;
-}
-#mobile{
-    position: absolute;
-    background-color: white;
-    height: 100%;
-    width: 100%;
-    z-index: 10000;
-    top: 0;
-    left: 0;
-    font-size: 30px;
-    text-align: center;
-    padding-top: 350px;
-    display: none;
 }
