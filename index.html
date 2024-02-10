@@ -110,12 +110,12 @@
                 <input type="number" min="1" max="12" value="1" id="dice-roll" >
             </div><br>
             <label for="job-expense">Expense for this job: </label>
-            <input type="number" id="job-expense" step="1000">
+            <input type="number" id="job-expense" step="1000"><br>
             <button id="submit-job" onclick="submitJob()" class="submit">Submit Job</button>
         </fieldset>
         <fieldset id="loan" class="sect">
             <legend>Loan</legend>
-            <p id="current-loan">$<span id="current-amount"></span></p>
+            <p id="current-loan">Current Amount: $<span id="current-amount"></span></p>
             <label for="new-amount">$</label>
             <input type="number" step="1000" id="new-amount" value=""><br>
             <div id="loan-buttons">
@@ -126,13 +126,13 @@
         <fieldset id="custom-income" class="sect custom">
             <legend>Custom Income</legend>
             <label for="cust-inc-amount">$</label>
-            <input type="number" step="1000" id="cust-inc-amount" value="">
+            <input type="number" step="1000" id="cust-inc-amount" value=""><br>
             <button onclick="customIncome()" class="submit">Submit Amount</button>
         </fieldset>
         <fieldset id="custom-expense" class="sect custom">
             <legend>Custom Expense</legend>
             <label for="cust-exp-amount">&minus;$</label>
-            <input type="number" step="1000" id="cust-exp-amount" value="">
+            <input type="number" step="1000" id="cust-exp-amount" value=""><br>
             <button onclick="customExpense()" class="submit">Submit Amount</button>
         </fieldset>
     </section>

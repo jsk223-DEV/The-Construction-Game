@@ -11,7 +11,6 @@ body{background-color: whitesmoke;}
     background-position: 50%;
     background-repeat: no-repeat;
     box-shadow: 0 0 5px gray;
-    border-radius: 0 20px 20px 0;
 }
 #equipment-pane{
     width: 20%;
@@ -38,7 +37,7 @@ body{background-color: whitesmoke;}
     height: 40px;
     position: absolute;
     bottom: 0;
-    border-top:10px double black;
+    border-top:10px double white;
     text-align: center;
     font-size: 25px;
     vertical-align: middle;
@@ -58,18 +57,19 @@ body{background-color: whitesmoke;}
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
-    background-color: rgba(197, 194, 191, 0.719);
+    background-color: rgba(197, 194, 191, 0.771);
+    box-shadow: 0 0 5px white inset;
     padding: 15px;
     border-radius: 10px;
 
 }
 
 .income{
-    color: green;
+    color: rgb(10, 105, 10);
     list-style-type: "\002B";
 }
 .expense{
-    color: red;
+    color: rgb(168, 39, 39);
     list-style-type: "\2212";
 }
 .equip-wrap{
@@ -140,6 +140,8 @@ body{background-color: whitesmoke;}
     border: 1px solid black;
     box-shadow: 0 0 5px gray;
     font-weight: 500;
+    opacity: 1 !important;
+
   }
 .scrape-buy[alt]:hover::after {
     top: -249%;
@@ -171,7 +173,6 @@ body{background-color: whitesmoke;}
     height: 260px;
     border: 1px solid black;
     background-color: rgba(197, 194, 191, 0.719);
-    position: relative;
     margin: 20px;
     border-radius: 30px;
     z-index: 10;
@@ -240,24 +241,23 @@ body{background-color: whitesmoke;}
     margin-top: 20px;
 }
 .submit{
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
     font-size: 19px;
     border-radius: 10px;
     font-family: 'Courier New', Courier, monospace;
     padding: 5px 7px;
     border: 1px solid black;
     background-color: rgb(210, 210, 202);
+    margin-top: 25px;
 }
 .submit:hover{
+    position: relative;
+    bottom: 1px;
+    right: 1px;
     border-bottom: 2px solid black;
 }
 .submit:active{
-    border-top: 2px solid black;
-    border-bottom: 1px solid black;
-
+    top: 0;
+    right: 0;
 }
 .sect legend{
     font-size: 19px;
@@ -297,10 +297,7 @@ body{background-color: whitesmoke;}
 
 #loan .submit{
     display: inline;
-    left: 0;
-    bottom: 0;
-    position: relative;
-    transform: translateX(0);
+    margin: 0;
 }
 #loan-buttons{
     display: flex;
@@ -310,9 +307,16 @@ body{background-color: whitesmoke;}
     height: 35px;
     margin: 23px auto 0 auto;
 }
+#new-job .submit{
+    margin: 8px;
+}
 #options{
     padding: 10px;
     height: 35px;
+}
+#options .submit{
+    font-weight: 600;
+    margin: 0;
 }
 
 
