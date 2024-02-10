@@ -509,6 +509,14 @@ function newGame() {
     document.getElementById('money-list').innerHTML = '';
     addIncome(100_000, 'Game Start');
 }
+
+if(window.navigator.userAgentData.mobile){
+    document.body.style.overflow = 'hidden';
+    document.getElementById('mobile').style.display = 'block';
+}else{
+    document.body.style.overflow = 'auto';
+    document.getElementById('mobile').style.display = 'none';
+}
 newGame();
 
 
