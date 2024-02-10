@@ -16,11 +16,7 @@ html {
     padding-top: 350px;
     display: none;
 }
-/* @media screen and (max-width:1025px) {
-    #mobile{
-        display: block;
-    }
- } */
+
 body {
     background-color: whitesmoke;
     overflow: auto;
