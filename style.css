@@ -299,6 +299,7 @@ body {
     bottom: 1px;
     right: 1px;
     border-bottom: 2px solid black;
+    margin-top: 24px;
 }
 
 .submit:active {
@@ -356,9 +357,11 @@ body {
 }
 
 #new-job .submit {
-    margin: 8px;
+    margin-top: 8px;
 }
-
+#new-job .submit:hover{
+    margin-top: 7px;
+}
 #options {
     padding: 10px;
     height: 35px;
