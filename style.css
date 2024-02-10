@@ -1,18 +1,27 @@
-body{background-color: whitesmoke;}
-#account-pane{
+html {
+    min-width: 850px;
+    min-height: 555px;
+
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+#account-pane {
     width: 20%;
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
-    border: 1px solid black;
     background-image: url(images/main-back.jpg);
     background-size: 500% 100%;
     background-position: 50%;
     background-repeat: no-repeat;
-    box-shadow: 0 0 5px gray;
+    box-shadow: 0 0 15px 3px lightslategray;
 }
-#equipment-pane{
+
+#equipment-pane {
     width: 20%;
     position: fixed;
     top: 0;
@@ -21,38 +30,42 @@ body{background-color: whitesmoke;}
     display: flex;
     flex-direction: column;
 }
-#main-pane{
+
+#main-pane {
     width: 50%;
     height: fit-content;
+    padding: 3px 0;
     margin: 0 auto;
-    border: 1px solid black;
     background-image: url(images/main-back.jpg);
     border-radius: 20px;
-    box-shadow: 0 0 10px gray;
+    box-shadow: 0 0 15px 3px lightslategray;
     text-align: center;
     z-index: 5;
 }
-#balance{
+
+#balance {
     width: 100%;
     height: 40px;
     position: absolute;
     bottom: 0;
-    border-top:10px double white;
+    border-top: 10px double white;
     text-align: center;
     font-size: 25px;
     vertical-align: middle;
     color: white;
 
 }
-#ml-wrap{
+
+#ml-wrap {
     height: calc(100% - 50px);
     width: stretch;
     display: flex;
     flex-direction: column-reverse;
     overflow-y: auto;
-    
+
 }
-#money-list{
+
+#money-list {
     font-size: 21px;
     width: fit-content;
     margin-left: auto;
@@ -64,15 +77,17 @@ body{background-color: whitesmoke;}
 
 }
 
-.income{
+.income {
     color: rgb(10, 105, 10);
     list-style-type: "\002B";
 }
-.expense{
+
+.expense {
     color: rgb(168, 39, 39);
     list-style-type: "\2212";
 }
-.equip-wrap{
+
+.equip-wrap {
     height: 20%;
     width: 100%;
     text-align: center;
@@ -84,35 +99,43 @@ body{background-color: whitesmoke;}
 }
 
 
-.back{
+.back {
     background-color: rgba(229, 185, 9, 0.337);
 }
-.dozer{
+
+.dozer {
     background-color: rgba(107, 133, 72, 0.337);
 }
-.exca{
+
+.exca {
     background-color: rgba(197, 43, 31, 0.337);
 }
-.grade{
+
+.grade {
     background-color: rgba(69, 122, 166, 0.337);
 }
-.scrape{
+
+.scrape {
     background-color: rgba(92, 42, 79, 0.337);
 }
-.equip-wrap img{
+
+.equip-wrap img {
     height: 40px;
     display: block;
     width: fit-content;
     margin: 4px auto 0 auto;
 }
-.equip-title, .owned-wrap{
+
+.equip-title,
+.owned-wrap {
     margin: 0;
     font-size: 22px;
     font-weight: 500;
     font-family: 'Courier New', Courier, monospace;
 }
 
-.buy-button, .double{
+.buy-button,
+.double {
     background-color: #ffffff87;
     border: none;
     width: 45%;
@@ -124,7 +147,8 @@ body{background-color: whitesmoke;}
     position: relative;
     z-index: 20;
 }
-.buy-button[alt]:hover::after, 
+
+.buy-button[alt]:hover::after,
 .double[alt]:hover::after,
 #options .submit[alt]:hover::after {
     content: attr(alt);
@@ -142,26 +166,33 @@ body{background-color: whitesmoke;}
     font-weight: 500;
     opacity: 1 !important;
 
-  }
+}
+
 .scrape-buy[alt]:hover::after {
     top: -249%;
 }
-.scrape-dob[alt]:hover::after{
+
+.scrape-dob[alt]:hover::after {
     top: -60%;
     right: 102%;
     height: fit-content;
 }
-.buy-button:hover, .double:hover{
+
+.buy-button:hover,
+.double:hover {
     padding: 9px;
     border: 1px solid black;
     background-color: #ffffffA7;
 }
-.buy-button:active, .double:active{
+
+.buy-button:active,
+.double:active {
     border: 2px solid black;
     padding: 8px;
     background-color: #ffffff31;
 }
-.active{
+
+.active {
     border: 1px solid black;
     padding: 8px;
     background-color: #ffffffA7;
@@ -169,8 +200,10 @@ body{background-color: whitesmoke;}
     box-shadow: 0 0 10px 0 inset rgb(191, 190, 190);
 
 }
-.sect, #options{
-    height: 260px;
+
+.sect,
+#options {
+    height: fit-content;
     border: 1px solid black;
     background-color: rgba(197, 194, 191, 0.719);
     margin: 20px;
@@ -178,7 +211,11 @@ body{background-color: whitesmoke;}
     z-index: 10;
     box-shadow: 0 0 10px white inset;
 }
-#job-equip, #job-expense, .custom input, #new-amount{
+
+#job-equip,
+#job-expense,
+.custom input,
+#new-amount {
     width: 180px;
     border-radius: 5px;
     font-family: 'Courier New', Courier, monospace;
@@ -187,20 +224,25 @@ body{background-color: whitesmoke;}
     background-color: rgb(210, 210, 202);
     border: 1px solid black;
     height: 28px;
-    
+
 }
-#dice-wrap{
+
+#dice-wrap {
     width: 180px;
     height: 55px;
     text-align: center;
-    
+
 }
-#job-expense, #job-equip, #dice-wrap{
+
+#job-expense,
+#job-equip,
+#dice-wrap {
     position: relative;
     display: inline-block;
     right: 10%;
 }
-#dice-roll{
+
+#dice-roll {
     width: 60px;
     height: 50px;
     border-radius: 10px;
@@ -212,35 +254,37 @@ body{background-color: whitesmoke;}
     border: 1px solid black;
 }
 
-#new-job label{
+#new-job label {
     font-size: 19px;
     font-family: 'Courier New', Courier, monospace;
     font-weight: 550;
     width: 265px;
     padding: 4px 0;
     text-align: right;
-    margin: 16px 5px 16px 15%; 
+    margin: 16px 5px 16px 15%;
     position: relative;
     right: 10%;
     display: inline-block;
     height: 20px;
 }
-.custom label, #loan label{
+
+.custom label,
+#loan label {
     font-size: 22px;
     font-family: 'Courier New', Courier, monospace;
     font-weight: 550;
     margin-left: -15px;
 }
-#custom-expense label{
+
+#custom-expense label {
     margin-left: -30px;
 }
-.custom{
-    height: 150px;
-}
-.custom input{
+
+.custom input {
     margin-top: 20px;
 }
-.submit{
+
+.submit {
     font-size: 19px;
     border-radius: 10px;
     font-family: 'Courier New', Courier, monospace;
@@ -249,17 +293,20 @@ body{background-color: whitesmoke;}
     background-color: rgb(210, 210, 202);
     margin-top: 25px;
 }
-.submit:hover{
+
+.submit:hover {
     position: relative;
     bottom: 1px;
     right: 1px;
     border-bottom: 2px solid black;
 }
-.submit:active{
+
+.submit:active {
     top: 0;
     right: 0;
 }
-.sect legend{
+
+.sect legend {
     font-size: 19px;
     font-family: 'Courier New', Courier, monospace;
     font-weight: 600;
@@ -268,7 +315,8 @@ body{background-color: whitesmoke;}
     border-radius: 10px;
     border: 1px solid black;
 }
-#alert-box{
+
+#alert-box {
     position: fixed;
     left: 50%;
     top: -10%;
@@ -283,7 +331,8 @@ body{background-color: whitesmoke;}
     box-shadow: 0 0 5px gray;
     font-weight: 500;
 }
-#current-loan{
+
+#current-loan {
     height: 22px;
     width: fit-content;
     margin: 10px auto;
@@ -291,15 +340,13 @@ body{background-color: whitesmoke;}
     font-family: 'Courier New', Courier, monospace;
     font-weight: 550;
 }
-#loan{
-    height: 170px;
-}
 
-#loan .submit{
+#loan .submit {
     display: inline;
     margin: 0;
 }
-#loan-buttons{
+
+#loan-buttons {
     display: flex;
     justify-content: space-between;
     width: 320px;
@@ -307,16 +354,17 @@ body{background-color: whitesmoke;}
     height: 35px;
     margin: 23px auto 0 auto;
 }
-#new-job .submit{
+
+#new-job .submit {
     margin: 8px;
 }
-#options{
+
+#options {
     padding: 10px;
     height: 35px;
 }
-#options .submit{
+
+#options .submit {
     font-weight: 600;
     margin: 0;
 }
-
-
