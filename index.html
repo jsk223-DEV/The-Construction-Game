@@ -124,18 +124,6 @@
                 <button class="submit" onclick="decreaseLoan()">Pay Amount</button>
             </div>
         </fieldset>
-        <fieldset id="custom-income" class="sect custom">
-            <legend>Custom Income</legend>
-            <label for="cust-inc-amount">$</label>
-            <input type="number" step="1000" id="cust-inc-amount" value=""><br>
-            <button onclick="customIncome()" class="submit">Submit Amount</button>
-        </fieldset>
-        <fieldset id="custom-expense" class="sect custom">
-            <legend>Custom Expense</legend>
-            <label for="cust-exp-amount">&minus;$</label>
-            <input type="number" step="1000" id="cust-exp-amount" value=""><br>
-            <button onclick="customExpense()" class="submit">Submit Amount</button>
-        </fieldset>
         <fieldset id="sell-equip" class="sect custom">
             <legend>Sell Equipment</legend>
             <label for="sell-select">Which Equipment: </label>
@@ -151,6 +139,19 @@
             <button onclick="sellEquip()" class="submit">Sell Equipment</button>
 
         </fieldset>
+        <fieldset id="custom-income" class="sect custom">
+            <legend>Custom Income</legend>
+            <label for="cust-inc-amount">$</label>
+            <input type="number" step="1000" id="cust-inc-amount" value=""><br>
+            <button onclick="customIncome()" class="submit">Submit Amount</button>
+        </fieldset>
+        <fieldset id="custom-expense" class="sect custom">
+            <legend>Custom Expense</legend>
+            <label for="cust-exp-amount">&minus;$</label>
+            <input type="number" step="1000" id="cust-exp-amount" value=""><br>
+            <button onclick="customExpense()" class="submit">Submit Amount</button>
+        </fieldset>
+
     </section>
     <script src="script.js"></script>
 
