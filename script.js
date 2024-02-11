@@ -496,6 +496,21 @@ function newGame() {
     localStorage.setItem('balance', 0);
     localStorage.setItem('loanAmount', 0);
     document.getElementById('current-amount').innerHTML = localStorage.getItem('loanAmount');
+    if(backhoe.doubled){
+        toggleDouble(document.getElementsByClassName('back')[0].getElementsByTagName('button')[0], 'back')
+    }
+    if(dozer.doubled){
+        toggleDouble(document.getElementsByClassName('dozer')[0].getElementsByTagName('button')[0], 'dozer')
+    }
+    if(excavator.doubled){
+        toggleDouble(document.getElementsByClassName('exca')[0].getElementsByTagName('button')[0], 'exca')
+    }
+    if(grader.doubled){
+        toggleDouble(document.getElementsByClassName('grade')[0].getElementsByTagName('button')[0], 'grade')
+    }
+    if(scraper.doubled){
+        toggleDouble(document.getElementsByClassName('scrape')[0].getElementsByTagName('button')[0], 'scrape')
+    }
     backhoe.amountOwned = 2;
     dozer.amountOwned = 1;
     excavator.amountOwned = 0;
@@ -507,6 +522,7 @@ function newGame() {
     document.getElementById('grade-owned').innerHTML = grader.amountOwned;
     document.getElementById('scrape-owned').innerHTML = scraper.amountOwned;
     document.getElementById('money-list').innerHTML = '';
+    
     addIncome(100_000, 'Game Start');
 }
 
