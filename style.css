@@ -292,7 +292,10 @@ body {
     display: inline-block;
     height: 20px;
 }
-
+#new-dollar{
+    margin-right: -5px;
+    font-size: 22px;
+}
 .custom label,
 #loan label,
 #sell-equip label {
