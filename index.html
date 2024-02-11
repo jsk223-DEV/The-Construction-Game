@@ -136,6 +136,21 @@
             <input type="number" step="1000" id="cust-exp-amount" value=""><br>
             <button onclick="customExpense()" class="submit">Submit Amount</button>
         </fieldset>
+        <fieldset id="sell-equip" class="sect custom">
+            <legend>Sell Equipment</legend>
+            <label for="sell-select">Which Equipment: </label>
+            <select id="sell-select">
+                <option value="sell-back">Backhoe</option>
+                <option value="sell-dozer">Dozer</option>
+                <option value="sell-exca">Excavator</option>
+                <option value="sell-grade">Grader</option>
+                <option value="sell-scrape">Scraper</option>
+            </select><br>
+            <label for="sell-amount">Sell Amount: $</label>
+            <input type="number" step="1000" id="sell-amount" value=""><br>
+            <button onclick="sellEquip()" class="submit">Sell Equipment</button>
+
+        </fieldset>
     </section>
     <script src="script.js"></script>
 

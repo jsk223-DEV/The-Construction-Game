@@ -66,13 +66,13 @@ const backhoe = {
     price: 50_000,
     base: 1_000,
     doubled: false,
+    ownedInd: document.getElementById('back-owned'),
     buyOne: function () {
         if (this.doubled) {
             if (this.price <= localStorage.getItem('balance')) {
-                const backOwned = document.getElementById('back-owned');
                 this.amountOwned /= 2;
                 this.amountOwned += 1;
-                backOwned.innerHTML = this.amountOwned;
+                this.ownedInd.innerHTML = this.amountOwned;
                 addExpense(this.price, 'New Backhoe');
                 this.amountOwned *= 2;
             } else {
@@ -80,15 +80,29 @@ const backhoe = {
             }
         } else {
             if (this.price <= localStorage.getItem('balance')) {
-                const backOwned = document.getElementById('back-owned');
                 this.amountOwned += 1;
-                backOwned.innerHTML = this.amountOwned;
+                this.ownedInd.innerHTML = this.amountOwned;
                 addExpense(this.price, 'New Backhoe');
             } else {
                 alertBox('You currently do not have enough money to buy a backhoe.');
             }
         }
         console.log(this.amountOwned)
+    },
+    sellOne: function (amount){
+        if(this.amountOwned > 0){        
+            if(this.doubled){
+                this.amountOwned /= 2;
+                this.amountOwned -= 1;
+                this.ownedInd.innerHTML = this.amountOwned;
+                addIncome(amount, 'Sold Backhoe');
+                this.amountOwned *= 2;
+            }else{
+                this.amountOwned -= 1;
+                this.ownedInd.innerHTML = this.amountOwned;
+                addIncome(amount, 'Sold Backhoe');
+            }
+        }
     },
     double: function () {
         document.getElementById('dback-ind').style.display = 'inline';
@@ -106,13 +120,13 @@ const dozer = {
     price: 75_000,
     base: 2_000,
     doubled: false,
+    ownedInd: document.getElementById('dozer-owned'),
     buyOne: function () {
         if (this.doubled) {
             if (this.price <= localStorage.getItem('balance')) {
-                const backOwned = document.getElementById('dozer-owned');
                 this.amountOwned /= 2;
                 this.amountOwned += 1;
-                backOwned.innerHTML = this.amountOwned;
+                this.ownedInd.innerHTML = this.amountOwned;
                 addExpense(this.price, 'New Dozer');
                 this.amountOwned *= 2;
             } else {
@@ -120,12 +134,27 @@ const dozer = {
             }
         } else {
             if (this.price <= localStorage.getItem('balance')) {
-                const backOwned = document.getElementById('dozer-owned');
                 this.amountOwned += 1;
-                backOwned.innerHTML = this.amountOwned;
+                this.ownedInd.innerHTML = this.amountOwned;
                 addExpense(this.price, 'New Dozer');
             } else {
                 alertBox('You currently do not have enough money to buy a dozer.');
+            }
+        }
+    },
+    sellOne: function (amount){
+        if(this.amountOwned > 0){        
+            
+            if(this.doubled){
+                this.amountOwned /= 2;
+                this.amountOwned -= 1;
+                this.ownedInd.innerHTML = this.amountOwned;
+                addIncome(amount, 'Sold Dozer');
+                this.amountOwned *= 2;
+            }else{
+                this.amountOwned -= 1;
+                this.ownedInd.innerHTML = this.amountOwned;
+                addIncome(amount, 'Sold Dozer');
             }
         }
     },
@@ -145,13 +174,13 @@ const excavator = {
     price: 100_000,
     base: 3_000,
     doubled: false,
+    ownedInd: document.getElementById('exca-owned'),
     buyOne: function () {
         if (this.doubled) {
             if (this.price <= localStorage.getItem('balance')) {
-                const backOwned = document.getElementById('exca-owned');
                 this.amountOwned /= 2;
                 this.amountOwned += 1;
-                backOwned.innerHTML = this.amountOwned;
+                this.ownedInd.innerHTML = this.amountOwned;
                 addExpense(100_000, 'New Excavator');
                 this.amountOwned *= 2;
             } else {
@@ -159,12 +188,26 @@ const excavator = {
             }
         } else {
             if (this.price <= localStorage.getItem('balance')) {
-                const backOwned = document.getElementById('exca-owned');
                 this.amountOwned += 1;
-                backOwned.innerHTML = this.amountOwned;
+                this.ownedInd.innerHTML = this.amountOwned;
                 addExpense(100_000, 'New Excavator');
             } else {
                 alertBox('You currently do not have enough money to buy a excavator.');
+            }
+        }
+    },
+    sellOne: function (amount){
+        if(this.amountOwned > 0){        
+            if(this.doubled){
+                this.amountOwned /= 2;
+                this.amountOwned -= 1;
+                this.ownedInd.innerHTML = this.amountOwned;
+                addIncome(amount, 'Sold Excavator');
+                this.amountOwned *= 2;
+            }else{
+                this.amountOwned -= 1;
+                this.ownedInd.innerHTML = this.amountOwned;
+                addIncome(amount, 'Sold Excavator');
             }
         }
     },
@@ -184,13 +227,13 @@ const grader = {
     price: 150_000,
     base: 5_000,
     doubled: false,
+    ownedInd: document.getElementById('grade-owned'),
     buyOne: function () {
         if (this.doubled) {
             if (this.price <= localStorage.getItem('balance')) {
-                const backOwned = document.getElementById('grade-owned');
                 this.amountOwned /= 2;
                 this.amountOwned += 1;
-                backOwned.innerHTML = this.amountOwned;
+                this.ownedInd.innerHTML = this.amountOwned;
                 addExpense(this.price, 'New Grader');
                 this.amountOwned *= 2;
             } else {
@@ -198,12 +241,26 @@ const grader = {
             }
         } else {
             if (this.price <= localStorage.getItem('balance')) {
-                const backOwned = document.getElementById('grade-owned');
                 this.amountOwned += 1;
-                backOwned.innerHTML = this.amountOwned;
+                this.ownedInd.innerHTML = this.amountOwned;
                 addExpense(this.price, 'New Grader');
             } else {
                 alertBox('You currently do not have enough money to buy a grader.');
+            }
+        }
+    },
+    sellOne: function (amount){
+        if(this.amountOwned > 0){        
+            if(this.doubled){
+                this.amountOwned /= 2;
+                this.amountOwned -= 1;
+                this.ownedInd.innerHTML = this.amountOwned;
+                addIncome(amount, 'Sold Grader');
+                this.amountOwned *= 2;
+            }else{
+                this.amountOwned -= 1;
+                this.ownedInd.innerHTML = this.amountOwned;
+                addIncome(amount, 'Sold Grader');
             }
         }
     },
@@ -224,13 +281,13 @@ const scraper = {
     price: 200_000,
     base: 7_000,
     doubled: false,
+    ownedInd: document.getElementById('scrape-owned'),
     buyOne: function () {
         if (this.doubled) {
             if (this.price <= localStorage.getItem('balance')) {
-                const backOwned = document.getElementById('scrape-owned');
                 this.amountOwned /= 2;
                 this.amountOwned += 1;
-                backOwned.innerHTML = this.amountOwned;
+                this.ownedInd.innerHTML = this.amountOwned;
                 addExpense(this.price, 'New Scraper');
                 this.amountOwned *= 2;
             } else {
@@ -238,12 +295,26 @@ const scraper = {
             }
         } else {
             if (this.price <= localStorage.getItem('balance')) {
-                const backOwned = document.getElementById('scrape-owned');
                 this.amountOwned += 1;
-                backOwned.innerHTML = this.amountOwned;
+                this.ownedInd.innerHTML = this.amountOwned;
                 addExpense(this.price, 'New Scraper');
             } else {
                 alertBox('You currently do not have enough money to buy a scraper.');
+            }
+        }
+    },
+    sellOne: function (amount){
+        if(this.amountOwned > 0){        
+            if(this.doubled){
+                this.amountOwned /= 2;
+                this.amountOwned -= 1;
+                this.ownedInd.innerHTML = this.amountOwned;
+                addIncome(amount, 'Sold Scraper');
+                this.amountOwned *= 2;
+            }else{
+                this.amountOwned -= 1;
+                this.ownedInd.innerHTML = this.amountOwned;
+                addIncome(amount, 'Sold Scraper');
             }
         }
     },
@@ -438,6 +509,35 @@ function decreaseLoan() {
     }
 }
 
+function sellEquip(){
+    const sellAmount = document.getElementById('sell-amount');
+    let sellAmountVal = Number(sellAmount.value);
+    const whichSell = document.getElementById('sell-select').value;
+    if (sellAmountVal > 0){
+        switch (whichSell){ 
+            case 'sell-back':
+                backhoe.sellOne(sellAmountVal);
+                break;
+            case 'sell-dozer':
+                dozer.sellOne(sellAmountVal);
+                break;
+            case 'sell-exca':
+                excavator.sellOne(sellAmountVal);
+                break;
+            case 'sell-grade':
+                grader.sellOne(sellAmountVal);
+                break;
+            case 'sell-scrape':
+                scraper.sellOne(sellAmountVal);
+                break;
+
+        }
+    }
+    sellAmount.value = '';
+
+    
+}
+
 document.getElementById('dice-roll').addEventListener('input',
     () => {
         const diceNum = document.getElementById('dice-roll');
@@ -478,6 +578,14 @@ document.getElementById('new-amount').addEventListener('input',
 document.getElementById('job-expense').addEventListener('input',
     (evt) => {
         const customAmount = document.getElementById('job-expense');
+        if (customAmount.value < 0 || evt.data == '-') {
+            customAmount.value = '';
+        }
+    }
+);
+document.getElementById('sell-amount').addEventListener('input',
+    (evt) => {
+        const customAmount = document.getElementById('sell-amount');
         if (customAmount.value < 0 || evt.data == '-') {
             customAmount.value = '';
         }

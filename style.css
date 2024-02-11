@@ -229,7 +229,8 @@ body {
 #job-equip,
 #job-expense,
 .custom input,
-#new-amount {
+#new-amount,
+#sell-amount {
     width: 180px;
     border-radius: 5px;
     font-family: 'Courier New', Courier, monospace;
@@ -239,6 +240,16 @@ body {
     border: 1px solid black;
     height: 28px;
 
+}
+
+#sell-select{
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 19px;
+    padding: 2px;
+    background-color: rgb(210, 210, 202);
+    border: 1px solid black;
+    margin-top: 15px;
 }
 
 #dice-wrap {
@@ -283,7 +294,8 @@ body {
 }
 
 .custom label,
-#loan label {
+#loan label,
+#sell-equip label {
     font-size: 22px;
     font-family: 'Courier New', Courier, monospace;
     font-weight: 550;
