@@ -139,7 +139,7 @@
         <fieldset id="sell-equip" class="sect custom">
             <legend>Sell Equipment</legend>
             <label for="sell-select">Which Equipment: </label>
-            <select id="sell-select">
+            <select id="sell-select" onchange="changeDefault(this.value)">
                 <option value="sell-back">Backhoe</option>
                 <option value="sell-dozer">Dozer</option>
                 <option value="sell-exca">Excavator</option>

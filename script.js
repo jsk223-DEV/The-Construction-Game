@@ -533,8 +533,9 @@ function sellEquip(){
 
         }
     }
-    sellAmount.value = '';
-
+    
+    document.getElementById('sell-select').value = 'sell-back';
+    sellAmount.value = 50_000;
     
 }
 
@@ -592,6 +593,27 @@ document.getElementById('sell-amount').addEventListener('input',
     }
 );
 
+function changeDefault(x){
+    const sellInput = document.getElementById('sell-amount');
+    switch (x){
+        case 'sell-back':
+            sellInput.value = backhoe.price;
+            break;
+        case 'sell-dozer':
+            sellInput.value = dozer.price;
+            break;
+        case 'sell-exca':
+            sellInput.value = excavator.price;
+            break;
+        case 'sell-grade':
+            sellInput.value = grader.price;
+            break;
+        case 'sell-scrape':
+            sellInput.value = scraper.price;
+            break;
+    }
+}
+
 function alertBox(message) {
     const alertEle = document.getElementById('alert-box');
     document.getElementById('alert-box').innerHTML = message;
@@ -630,7 +652,14 @@ function newGame() {
     document.getElementById('grade-owned').innerHTML = grader.amountOwned;
     document.getElementById('scrape-owned').innerHTML = scraper.amountOwned;
     document.getElementById('money-list').innerHTML = '';
-    
+    document.getElementById('sell-select').value = 'sell-back';
+    document.getElementById('sell-amount').value = 50_000;
+    document.getElementById('dice-roll').value = 1;
+    document.getElementById('new-amount').value = '';
+    document.getElementById('job-expense').value = '';
+    document.getElementById('cust-inc-amount').value = '';
+    document.getElementById('cust-exp-amount').value = '';
+    document.getElementById('job-equip').value = 'back';
     addIncome(100_000, 'Game Start');
 }
 
