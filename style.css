@@ -280,10 +280,10 @@ body {
 }
 
 #new-job label {
-    font-size: 19px;
+    font-size: 20px;
     font-family: 'Courier New', Courier, monospace;
     font-weight: 550;
-    width: 265px;
+    width: 210px;
     padding: 4px 0;
     text-align: right;
     margin: 16px 5px 16px 15%;
