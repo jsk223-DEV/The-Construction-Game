@@ -656,7 +656,7 @@ function saveGame() {
         balance: sessionStorage.getItem('balance'),
         loanAmount: sessionStorage.getItem('loanAmount'),
 
-
+        moneyList: document.getElementById('money-list').innerHTML,
 
 
         backDub: backhoe.doubled,
@@ -691,7 +691,7 @@ function saveGame() {
 
     localStorage.setItem('gameInfo', JSON.stringify(gameInfo));
     alertBox('Game Saved');
-    console.log(backhoe.amountOwned)
+    console.log(gameInfo)
 }
 
 function loadGame() {
@@ -731,8 +731,8 @@ function loadGame() {
     }
 
     sessionStorage.setItem('balance', 0);
-    document.getElementById('money-list').innerHTML = '';
-    addIncome(gameInfo.balance, 'Loaded Balance');
+    document.getElementById('money-list').innerHTML = gameInfo.moneyList;
+    displayBalance(gameInfo.balance);
     sessionStorage.setItem('loanAmount', gameInfo.loanAmount);
     document.getElementById('current-amount').innerHTML = commify(gameInfo.loanAmount);
     alertBox('Last Save Loaded');
