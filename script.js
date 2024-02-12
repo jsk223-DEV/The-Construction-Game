@@ -1,10 +1,11 @@
 
 
+
 function displayBalance(amount) {
     let result = 0;
     const total = document.getElementById('balance');
-    result = Number(amount) + Number(localStorage.getItem('balance'));
-    localStorage.setItem('balance', result);
+    result = Number(amount) + Number(sessionStorage.getItem('balance'));
+    sessionStorage.setItem('balance', result);
     let rResult = commify(result);
     total.innerHTML = '$' + rResult;
 
@@ -69,7 +70,7 @@ const backhoe = {
     ownedInd: document.getElementById('back-owned'),
     buyOne: function () {
         if (this.doubled) {
-            if (this.price <= localStorage.getItem('balance')) {
+            if (this.price <= sessionStorage.getItem('balance')) {
                 this.amountOwned /= 2;
                 this.amountOwned += 1;
                 this.ownedInd.innerHTML = this.amountOwned;
@@ -79,7 +80,7 @@ const backhoe = {
                 alertBox('You currently do not have enough money to buy a backhoe.');
             }
         } else {
-            if (this.price <= localStorage.getItem('balance')) {
+            if (this.price <= sessionStorage.getItem('balance')) {
                 this.amountOwned += 1;
                 this.ownedInd.innerHTML = this.amountOwned;
                 addExpense(this.price, 'New Backhoe');
@@ -105,14 +106,20 @@ const backhoe = {
         }
     },
     double: function () {
-        document.getElementById('dback-ind').style.display = 'inline';
-        this.amountOwned *= 2;
-        this.doubled = true;
+        if (!this.doubled){
+            document.getElementById('dback-ind').style.display = 'inline';
+            this.amountOwned *= 2;
+            this.doubled = true;
+        }
+        console.log(this.amountOwned)
     },
     undouble: function () {
-        document.getElementById('dback-ind').style.display = 'none';
-        this.amountOwned /= 2;
-        this.doubled = false;
+        if(this.doubled){
+            document.getElementById('dback-ind').style.display = 'none';
+            this.amountOwned /= 2;
+            this.doubled = false;
+        }
+        console.log(this.amountOwned)
     }
 }
 const dozer = {
@@ -123,7 +130,7 @@ const dozer = {
     ownedInd: document.getElementById('dozer-owned'),
     buyOne: function () {
         if (this.doubled) {
-            if (this.price <= localStorage.getItem('balance')) {
+            if (this.price <= sessionStorage.getItem('balance')) {
                 this.amountOwned /= 2;
                 this.amountOwned += 1;
                 this.ownedInd.innerHTML = this.amountOwned;
@@ -133,7 +140,7 @@ const dozer = {
                 alertBox('You currently do not have enough money to buy a dozer.');
             }
         } else {
-            if (this.price <= localStorage.getItem('balance')) {
+            if (this.price <= sessionStorage.getItem('balance')) {
                 this.amountOwned += 1;
                 this.ownedInd.innerHTML = this.amountOwned;
                 addExpense(this.price, 'New Dozer');
@@ -177,7 +184,7 @@ const excavator = {
     ownedInd: document.getElementById('exca-owned'),
     buyOne: function () {
         if (this.doubled) {
-            if (this.price <= localStorage.getItem('balance')) {
+            if (this.price <= sessionStorage.getItem('balance')) {
                 this.amountOwned /= 2;
                 this.amountOwned += 1;
                 this.ownedInd.innerHTML = this.amountOwned;
@@ -187,7 +194,7 @@ const excavator = {
                 alertBox('You currently do not have enough money to buy a excavator.');
             }
         } else {
-            if (this.price <= localStorage.getItem('balance')) {
+            if (this.price <= sessionStorage.getItem('balance')) {
                 this.amountOwned += 1;
                 this.ownedInd.innerHTML = this.amountOwned;
                 addExpense(100_000, 'New Excavator');
@@ -230,7 +237,7 @@ const grader = {
     ownedInd: document.getElementById('grade-owned'),
     buyOne: function () {
         if (this.doubled) {
-            if (this.price <= localStorage.getItem('balance')) {
+            if (this.price <= sessionStorage.getItem('balance')) {
                 this.amountOwned /= 2;
                 this.amountOwned += 1;
                 this.ownedInd.innerHTML = this.amountOwned;
@@ -240,7 +247,7 @@ const grader = {
                 alertBox('You currently do not have enough money to buy a grader.');
             }
         } else {
-            if (this.price <= localStorage.getItem('balance')) {
+            if (this.price <= sessionStorage.getItem('balance')) {
                 this.amountOwned += 1;
                 this.ownedInd.innerHTML = this.amountOwned;
                 addExpense(this.price, 'New Grader');
@@ -284,7 +291,7 @@ const scraper = {
     ownedInd: document.getElementById('scrape-owned'),
     buyOne: function () {
         if (this.doubled) {
-            if (this.price <= localStorage.getItem('balance')) {
+            if (this.price <= sessionStorage.getItem('balance')) {
                 this.amountOwned /= 2;
                 this.amountOwned += 1;
                 this.ownedInd.innerHTML = this.amountOwned;
@@ -294,7 +301,7 @@ const scraper = {
                 alertBox('You currently do not have enough money to buy a scraper.');
             }
         } else {
-            if (this.price <= localStorage.getItem('balance')) {
+            if (this.price <= sessionStorage.getItem('balance')) {
                 this.amountOwned += 1;
                 this.ownedInd.innerHTML = this.amountOwned;
                 addExpense(this.price, 'New Scraper');
@@ -484,10 +491,10 @@ function addLoan() {
     const newAmount = document.getElementById('new-amount');
     let newAmountVal = Number(newAmount.value);
     const currentAmount = document.getElementById('current-amount');
-    const loanAmount = Number(localStorage.getItem('loanAmount'));
+    const loanAmount = Number(sessionStorage.getItem('loanAmount'));
     if (newAmountVal > 0) {
         let result = loanAmount + newAmountVal;
-        localStorage.setItem('loanAmount', result);
+        sessionStorage.setItem('loanAmount', result);
         currentAmount.innerHTML = commify(result);
         addIncome(newAmountVal, 'Loan');
         newAmount.value = '';
@@ -497,11 +504,11 @@ function decreaseLoan() {
     const newAmount = document.getElementById('new-amount');
     let newAmountVal = Number(newAmount.value);
     const currentAmount = document.getElementById('current-amount');
-    const loanAmount = Number(localStorage.getItem('loanAmount'));
+    const loanAmount = Number(sessionStorage.getItem('loanAmount'));
     if (newAmountVal > 0) {
         let result = loanAmount - newAmountVal;
         if (newAmountVal <= loanAmount + .01) {
-            localStorage.setItem('loanAmount', result);
+            sessionStorage.setItem('loanAmount', result);
             currentAmount.innerHTML = commify(result);
             addExpense(newAmountVal, 'Loan Payment');
             newAmount.value = '';
@@ -622,10 +629,10 @@ function alertBox(message) {
 }
 
 function newGame() {
-    localStorage.clear();
-    localStorage.setItem('balance', 0);
-    localStorage.setItem('loanAmount', 0);
-    document.getElementById('current-amount').innerHTML = localStorage.getItem('loanAmount');
+    sessionStorage.clear();
+    sessionStorage.setItem('balance', 0);
+    sessionStorage.setItem('loanAmount', 0);
+    document.getElementById('current-amount').innerHTML = sessionStorage.getItem('loanAmount');
     if(backhoe.doubled){
         toggleDouble(document.getElementsByClassName('back')[0].getElementsByTagName('button')[0], 'back')
     }
@@ -660,7 +667,7 @@ function newGame() {
     document.getElementById('cust-inc-amount').value = '';
     document.getElementById('cust-exp-amount').value = '';
     document.getElementById('job-equip').value = 'back';
-    addIncome(100_000, 'Game Start');
+    addIncome(100_000_000, 'Game Start');
 }
 
 
@@ -668,6 +675,114 @@ if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){
     document.body.style.overflow = 'hidden';
     document.getElementById('mobile').style.display = 'block';
 }
+
+function saveGame(){
+  
+    const gameInfo = {
+        balance: sessionStorage.getItem('balance'),
+        loanAmount: sessionStorage.getItem('loanAmount'),
+        
+        
+
+        
+        backDub: backhoe.doubled,
+        dozerDub: dozer.doubled,
+        excaDub: excavator.doubled,
+        gradeDub: grader.doubled,
+        scrapeDub: scraper.doubled, 
+
+        backOwned:  backhoe.amountOwned,
+        dozerOwned: dozer.amountOwned,
+        excaOwned:  excavator.amountOwned,
+        gradeOwned: grader.amountOwned,
+        scrapeOwned: scraper.amountOwned,
+    }
+    if (backhoe.doubled){
+        gameInfo.backOwned = backhoe.amountOwned / 2;
+    }
+    if (dozer.doubled){
+        gameInfo.dozerOwned = dozer.amountOwned / 2;
+    }
+    if (excavator.doubled){
+        gameInfo.excaOwned = excavator.amountOwned / 2;
+    }
+    if (grader.doubled){
+        gameInfo.gradeOwned = grader.amountOwned / 2;
+    }
+    if (scraper.doubled){
+        gameInfo.scrapeOwned = scraper.amountOwned / 2;
+    }
+    
+
+
+    localStorage.setItem('gameInfo', JSON.stringify(gameInfo));
+    alertBox('Game Saved');
+    console.log(backhoe.amountOwned)
+}
+
+function loadGame(){
+    const gameInfo = JSON.parse(localStorage.getItem('gameInfo'));
+    console.log(gameInfo);
+    newGame()
+    
+    backhoe.amountOwned = gameInfo.backOwned;
+    backhoe.ownedInd.innerHTML = gameInfo.backOwned;
+    
+    dozer.amountOwned = gameInfo.dozerOwned;
+    dozer.ownedInd.innerHTML = gameInfo.dozerOwned;
+    
+    excavator.amountOwned = gameInfo.excaOwned;
+    excavator.ownedInd.innerHTML = gameInfo.excaOwned;
+    
+    grader.amountOwned = gameInfo.gradeOwned;
+    grader.ownedInd.innerHTML = gameInfo.gradeOwned;
+    
+    scraper.amountOwned = gameInfo.scrapeOwned;
+    scraper.ownedInd.innerHTML = gameInfo.scrapeOwned;
+    
+    if(gameInfo.backDub){
+        toggleDouble(document.getElementsByClassName('back')[0].getElementsByTagName('button')[0], 'back')
+    }
+    if(gameInfo.dozerDub){
+        toggleDouble(document.getElementsByClassName('dozer')[0].getElementsByTagName('button')[0], 'dozer')
+    }
+    if(gameInfo.excaDub){
+        toggleDouble(document.getElementsByClassName('exca')[0].getElementsByTagName('button')[0], 'exca')
+    }
+    if(gameInfo.gradeDub){
+        toggleDouble(document.getElementsByClassName('grade')[0].getElementsByTagName('button')[0], 'grade')
+    }
+    if(gameInfo.scrapeDub){
+        toggleDouble(document.getElementsByClassName('scrape')[0].getElementsByTagName('button')[0], 'scrape')
+    }
+
+    sessionStorage.setItem('balance', 0);
+    document.getElementById('money-list').innerHTML = '';
+    addIncome(gameInfo.balance, 'Loaded Balance');
+    sessionStorage.setItem('loanAmount', gameInfo.loanAmount);
+    document.getElementById('current-amount').innerHTML = commify(gameInfo.loanAmount);
+    alertBox('Last Save Loaded');
+}
+
+// function checkIfSaved(){
+//     const gameInfo = JSON.parse(localStorage.getItem('gameInfo'));
+
+// }
 newGame();
 
+// const gameInfo = {
+//     balance: sessionStorage.getItem('balance'),
+//     loanAmount: sessionStorage.getItem('loanAmount'),
+  
+//     backDub: backhoe.doubled,
+//     dozerDub: dozer.doubled,
+//     excaDub: excavator.doubled,
+//     gradeDub: grader.doubled,
+//     scrapeDub: scraper.doubled, 
 
+//     backOwned:  backhoe.amountOwned,
+//     dozerOwned: dozer.amountOwned,
+//     excaOwned:  excavator.amountOwned,
+//     gradeOwned: grader.amountOwned,
+//     scrapeOwned: scraper.amountOwned,
+// }
