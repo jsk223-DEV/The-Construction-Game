@@ -751,7 +751,6 @@ function unsaved() {
     document.getElementById('save-game').style.backgroundColor = unsavedColor;
 }
 newGame();
-saveGame();
 
 
 
