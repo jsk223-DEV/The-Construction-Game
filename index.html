@@ -94,7 +94,7 @@
     </section>
     <section id="main-pane">
         <div id="options">
-            <button id="new-game" alt="This will reset your balance, loans, and equipment." class="submit" onclick="newGame()">New Game</button>
+            <button id="new-game" alt="This will reset your balance, loans, and equipment." class="submit" onclick="newGame(), unsaved()">New Game</button>
             <button id="save-game" alt="Save Game. When the background of this button is red, you have unsaved content." class="submit" onclick="saveGame()">Save Game</button>
             <button id="load-game" alt="Load last saved state of game." class="submit" onclick="loadGame()">Load Game</button>
         
@@ -115,7 +115,7 @@
             </div><br>
             <label for="job-expense">Job Expense: <span id="new-dollar">$</span></label>
             <input type="number" id="job-expense" step="1000"><br>
-            <button id="submit-job" onclick="submitJob()" class="submit">Submit Job</button>
+            <button id="submit-job" onclick="submitJob(), unsaved()" class="submit">Submit Job</button>
         </fieldset>
         <fieldset id="loan" class="sect">
             <legend>Loan</legend>
@@ -123,8 +123,8 @@
             <label for="new-amount">$</label>
             <input type="number" step="1000" id="new-amount" value=""><br>
             <div id="loan-buttons">
-                <button class="submit" onclick="addLoan()">Borrow Amount</button>
-                <button class="submit" onclick="decreaseLoan()">Pay Amount</button>
+                <button class="submit" onclick="addLoan(), unsaved()">Borrow Amount</button>
+                <button class="submit" onclick="decreaseLoan(), unsaved()">Pay Amount</button>
             </div>
         </fieldset>
         <fieldset id="sell-equip" class="sect custom">
@@ -139,20 +139,20 @@
             </select><br>
             <label for="sell-amount">Sell Amount: $</label>
             <input type="number" step="1000" id="sell-amount" value=""><br>
-            <button onclick="sellEquip()" class="submit">Sell Equipment</button>
+            <button onclick="sellEquip(), unsaved()" class="submit">Sell Equipment</button>
 
         </fieldset>
         <fieldset id="custom-income" class="sect custom">
             <legend>Custom Income</legend>
             <label for="cust-inc-amount">$</label>
             <input type="number" step="1000" id="cust-inc-amount" value=""><br>
-            <button onclick="customIncome()" class="submit">Submit Amount</button>
+            <button onclick="customIncome(), unsaved()" class="submit">Submit Amount</button>
         </fieldset>
         <fieldset id="custom-expense" class="sect custom">
             <legend>Custom Expense</legend>
             <label for="cust-exp-amount">&minus;$</label>
             <input type="number" step="1000" id="cust-exp-amount" value=""><br>
-            <button onclick="customExpense()" class="submit">Submit Amount</button>
+            <button onclick="customExpense(), unsaved()" class="submit">Submit Amount</button>
         </fieldset>
 
     </section>

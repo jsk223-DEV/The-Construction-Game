@@ -90,15 +90,15 @@ const backhoe = {
         }
         console.log(this.amountOwned)
     },
-    sellOne: function (amount){
-        if(this.amountOwned > 0){        
-            if(this.doubled){
+    sellOne: function (amount) {
+        if (this.amountOwned > 0) {
+            if (this.doubled) {
                 this.amountOwned /= 2;
                 this.amountOwned -= 1;
                 this.ownedInd.innerHTML = this.amountOwned;
                 addIncome(amount, 'Sold Backhoe');
                 this.amountOwned *= 2;
-            }else{
+            } else {
                 this.amountOwned -= 1;
                 this.ownedInd.innerHTML = this.amountOwned;
                 addIncome(amount, 'Sold Backhoe');
@@ -106,7 +106,7 @@ const backhoe = {
         }
     },
     double: function () {
-        if (!this.doubled){
+        if (!this.doubled) {
             document.getElementById('dback-ind').style.display = 'inline';
             this.amountOwned *= 2;
             this.doubled = true;
@@ -114,7 +114,7 @@ const backhoe = {
         console.log(this.amountOwned)
     },
     undouble: function () {
-        if(this.doubled){
+        if (this.doubled) {
             document.getElementById('dback-ind').style.display = 'none';
             this.amountOwned /= 2;
             this.doubled = false;
@@ -149,16 +149,16 @@ const dozer = {
             }
         }
     },
-    sellOne: function (amount){
-        if(this.amountOwned > 0){        
-            
-            if(this.doubled){
+    sellOne: function (amount) {
+        if (this.amountOwned > 0) {
+
+            if (this.doubled) {
                 this.amountOwned /= 2;
                 this.amountOwned -= 1;
                 this.ownedInd.innerHTML = this.amountOwned;
                 addIncome(amount, 'Sold Dozer');
                 this.amountOwned *= 2;
-            }else{
+            } else {
                 this.amountOwned -= 1;
                 this.ownedInd.innerHTML = this.amountOwned;
                 addIncome(amount, 'Sold Dozer');
@@ -203,15 +203,15 @@ const excavator = {
             }
         }
     },
-    sellOne: function (amount){
-        if(this.amountOwned > 0){        
-            if(this.doubled){
+    sellOne: function (amount) {
+        if (this.amountOwned > 0) {
+            if (this.doubled) {
                 this.amountOwned /= 2;
                 this.amountOwned -= 1;
                 this.ownedInd.innerHTML = this.amountOwned;
                 addIncome(amount, 'Sold Excavator');
                 this.amountOwned *= 2;
-            }else{
+            } else {
                 this.amountOwned -= 1;
                 this.ownedInd.innerHTML = this.amountOwned;
                 addIncome(amount, 'Sold Excavator');
@@ -256,15 +256,15 @@ const grader = {
             }
         }
     },
-    sellOne: function (amount){
-        if(this.amountOwned > 0){        
-            if(this.doubled){
+    sellOne: function (amount) {
+        if (this.amountOwned > 0) {
+            if (this.doubled) {
                 this.amountOwned /= 2;
                 this.amountOwned -= 1;
                 this.ownedInd.innerHTML = this.amountOwned;
                 addIncome(amount, 'Sold Grader');
                 this.amountOwned *= 2;
-            }else{
+            } else {
                 this.amountOwned -= 1;
                 this.ownedInd.innerHTML = this.amountOwned;
                 addIncome(amount, 'Sold Grader');
@@ -310,15 +310,15 @@ const scraper = {
             }
         }
     },
-    sellOne: function (amount){
-        if(this.amountOwned > 0){        
-            if(this.doubled){
+    sellOne: function (amount) {
+        if (this.amountOwned > 0) {
+            if (this.doubled) {
                 this.amountOwned /= 2;
                 this.amountOwned -= 1;
                 this.ownedInd.innerHTML = this.amountOwned;
                 addIncome(amount, 'Sold Scraper');
                 this.amountOwned *= 2;
-            }else{
+            } else {
                 this.amountOwned -= 1;
                 this.ownedInd.innerHTML = this.amountOwned;
                 addIncome(amount, 'Sold Scraper');
@@ -387,6 +387,7 @@ function toggleDouble(button, whichEquip) {
 }
 
 function submitJob() {
+
     const jobEquip = document.getElementById('job-equip');
     const dice = document.getElementById('dice-roll');
     const expense = document.getElementById('job-expense');
@@ -516,12 +517,12 @@ function decreaseLoan() {
     }
 }
 
-function sellEquip(){
+function sellEquip() {
     const sellAmount = document.getElementById('sell-amount');
     let sellAmountVal = Number(sellAmount.value);
     const whichSell = document.getElementById('sell-select').value;
-    if (sellAmountVal > 0){
-        switch (whichSell){ 
+    if (sellAmountVal > 0) {
+        switch (whichSell) {
             case 'sell-back':
                 backhoe.sellOne(sellAmountVal);
                 break;
@@ -540,10 +541,10 @@ function sellEquip(){
 
         }
     }
-    
+
     document.getElementById('sell-select').value = 'sell-back';
     sellAmount.value = 50_000;
-    
+
 }
 
 document.getElementById('dice-roll').addEventListener('input',
@@ -558,51 +559,23 @@ document.getElementById('dice-roll').addEventListener('input',
 
     }
 );
-document.getElementById('cust-inc-amount').addEventListener('input',
-    (evt) => {
-        const customAmount = document.getElementById('cust-inc-amount');
-        if (customAmount.value < 0 || evt.data == '-') {
-            customAmount.value = '';
-        }
 
+const sections = document.getElementsByClassName('sect');
+for (let x = 0; x < sections.length; x++) {
+    const numInputs = sections[x].getElementsByTagName('input');
+    for (let y = 0; y < numInputs.length; y++) {
+        numInputs[y].addEventListener('input',
+            (evt) => {
+                const customAmount = numInputs[y];
+                if (customAmount.value < 0 || evt.data == '-') {
+                    customAmount.value = '';
+                }
+            })
     }
-);
-document.getElementById('cust-exp-amount').addEventListener('input',
-    (evt) => {
-        const customAmount = document.getElementById('cust-exp-amount');
-        if (customAmount.value < 0 || evt.data == '-') {
-            customAmount.value = '';
-        }
-    }
-);
-document.getElementById('new-amount').addEventListener('input',
-    (evt) => {
-        const customAmount = document.getElementById('new-amount');
-        if (customAmount.value < 0 || evt.data == '-') {
-            customAmount.value = '';
-        }
-    }
-);
-document.getElementById('job-expense').addEventListener('input',
-    (evt) => {
-        const customAmount = document.getElementById('job-expense');
-        if (customAmount.value < 0 || evt.data == '-') {
-            customAmount.value = '';
-        }
-    }
-);
-document.getElementById('sell-amount').addEventListener('input',
-    (evt) => {
-        const customAmount = document.getElementById('sell-amount');
-        if (customAmount.value < 0 || evt.data == '-') {
-            customAmount.value = '';
-        }
-    }
-);
-
-function changeDefault(x){
+}
+function changeDefault(x) {
     const sellInput = document.getElementById('sell-amount');
-    switch (x){
+    switch (x) {
         case 'sell-back':
             sellInput.value = backhoe.price;
             break;
@@ -633,19 +606,19 @@ function newGame() {
     sessionStorage.setItem('balance', 0);
     sessionStorage.setItem('loanAmount', 0);
     document.getElementById('current-amount').innerHTML = sessionStorage.getItem('loanAmount');
-    if(backhoe.doubled){
+    if (backhoe.doubled) {
         toggleDouble(document.getElementsByClassName('back')[0].getElementsByTagName('button')[0], 'back')
     }
-    if(dozer.doubled){
+    if (dozer.doubled) {
         toggleDouble(document.getElementsByClassName('dozer')[0].getElementsByTagName('button')[0], 'dozer')
     }
-    if(excavator.doubled){
+    if (excavator.doubled) {
         toggleDouble(document.getElementsByClassName('exca')[0].getElementsByTagName('button')[0], 'exca')
     }
-    if(grader.doubled){
+    if (grader.doubled) {
         toggleDouble(document.getElementsByClassName('grade')[0].getElementsByTagName('button')[0], 'grade')
     }
-    if(scraper.doubled){
+    if (scraper.doubled) {
         toggleDouble(document.getElementsByClassName('scrape')[0].getElementsByTagName('button')[0], 'scrape')
     }
     backhoe.amountOwned = 2;
@@ -667,52 +640,53 @@ function newGame() {
     document.getElementById('cust-inc-amount').value = '';
     document.getElementById('cust-exp-amount').value = '';
     document.getElementById('job-equip').value = 'back';
-    addIncome(100_000_000, 'Game Start');
+    addIncome(100_000, 'Game Start');
 }
 
 
-if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){
+if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
     document.body.style.overflow = 'hidden';
     document.getElementById('mobile').style.display = 'block';
 }
 
-function saveGame(){
-  
+function saveGame() {
+    document.getElementById('save-game').style.backgroundColor = 'rgb(210, 210, 202)';
+    ;
     const gameInfo = {
         balance: sessionStorage.getItem('balance'),
         loanAmount: sessionStorage.getItem('loanAmount'),
-        
-        
 
-        
+
+
+
         backDub: backhoe.doubled,
         dozerDub: dozer.doubled,
         excaDub: excavator.doubled,
         gradeDub: grader.doubled,
-        scrapeDub: scraper.doubled, 
+        scrapeDub: scraper.doubled,
 
-        backOwned:  backhoe.amountOwned,
+        backOwned: backhoe.amountOwned,
         dozerOwned: dozer.amountOwned,
-        excaOwned:  excavator.amountOwned,
+        excaOwned: excavator.amountOwned,
         gradeOwned: grader.amountOwned,
         scrapeOwned: scraper.amountOwned,
     }
-    if (backhoe.doubled){
+    if (backhoe.doubled) {
         gameInfo.backOwned = backhoe.amountOwned / 2;
     }
-    if (dozer.doubled){
+    if (dozer.doubled) {
         gameInfo.dozerOwned = dozer.amountOwned / 2;
     }
-    if (excavator.doubled){
+    if (excavator.doubled) {
         gameInfo.excaOwned = excavator.amountOwned / 2;
     }
-    if (grader.doubled){
+    if (grader.doubled) {
         gameInfo.gradeOwned = grader.amountOwned / 2;
     }
-    if (scraper.doubled){
+    if (scraper.doubled) {
         gameInfo.scrapeOwned = scraper.amountOwned / 2;
     }
-    
+
 
 
     localStorage.setItem('gameInfo', JSON.stringify(gameInfo));
@@ -720,39 +694,39 @@ function saveGame(){
     console.log(backhoe.amountOwned)
 }
 
-function loadGame(){
+function loadGame() {
     const gameInfo = JSON.parse(localStorage.getItem('gameInfo'));
     console.log(gameInfo);
     newGame()
-    
+
     backhoe.amountOwned = gameInfo.backOwned;
     backhoe.ownedInd.innerHTML = gameInfo.backOwned;
-    
+
     dozer.amountOwned = gameInfo.dozerOwned;
     dozer.ownedInd.innerHTML = gameInfo.dozerOwned;
-    
+
     excavator.amountOwned = gameInfo.excaOwned;
     excavator.ownedInd.innerHTML = gameInfo.excaOwned;
-    
+
     grader.amountOwned = gameInfo.gradeOwned;
     grader.ownedInd.innerHTML = gameInfo.gradeOwned;
-    
+
     scraper.amountOwned = gameInfo.scrapeOwned;
     scraper.ownedInd.innerHTML = gameInfo.scrapeOwned;
-    
-    if(gameInfo.backDub){
+
+    if (gameInfo.backDub) {
         toggleDouble(document.getElementsByClassName('back')[0].getElementsByTagName('button')[0], 'back')
     }
-    if(gameInfo.dozerDub){
+    if (gameInfo.dozerDub) {
         toggleDouble(document.getElementsByClassName('dozer')[0].getElementsByTagName('button')[0], 'dozer')
     }
-    if(gameInfo.excaDub){
+    if (gameInfo.excaDub) {
         toggleDouble(document.getElementsByClassName('exca')[0].getElementsByTagName('button')[0], 'exca')
     }
-    if(gameInfo.gradeDub){
+    if (gameInfo.gradeDub) {
         toggleDouble(document.getElementsByClassName('grade')[0].getElementsByTagName('button')[0], 'grade')
     }
-    if(gameInfo.scrapeDub){
+    if (gameInfo.scrapeDub) {
         toggleDouble(document.getElementsByClassName('scrape')[0].getElementsByTagName('button')[0], 'scrape')
     }
 
@@ -764,25 +738,21 @@ function loadGame(){
     alertBox('Last Save Loaded');
 }
 
-// function checkIfSaved(){
-//     const gameInfo = JSON.parse(localStorage.getItem('gameInfo'));
-
-// }
+const buyBtns = document.getElementsByClassName('buy-button');
+for (let i = 0; i < buyBtns.length; i++) {
+    buyBtns[i].addEventListener('click', unsaved);
+}
+const dubBtns = document.getElementsByClassName('double');
+for (let i = 0; i < dubBtns.length; i++) {
+    dubBtns[i].addEventListener('click', unsaved);
+}
+function unsaved() {
+    let unsavedColor = 'rgb(201, 120, 133)';
+    document.getElementById('save-game').style.backgroundColor = unsavedColor;
+}
 newGame();
+saveGame();
 
-// const gameInfo = {
-//     balance: sessionStorage.getItem('balance'),
-//     loanAmount: sessionStorage.getItem('loanAmount'),
-  
-//     backDub: backhoe.doubled,
-//     dozerDub: dozer.doubled,
-//     excaDub: excavator.doubled,
-//     gradeDub: grader.doubled,
-//     scrapeDub: scraper.doubled, 
 
-//     backOwned:  backhoe.amountOwned,
-//     dozerOwned: dozer.amountOwned,
-//     excaOwned:  excavator.amountOwned,
-//     gradeOwned: grader.amountOwned,
-//     scrapeOwned: scraper.amountOwned,
-// }
+
+
