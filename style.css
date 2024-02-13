@@ -134,7 +134,7 @@ body {
 }
 
 .equip-wrap img {
-    height: 40px;
+    height: 30px;
     display: block;
     width: fit-content;
     margin: 4px auto 0 auto;
@@ -399,4 +399,13 @@ body {
 #options .submit {
     font-weight: 600;
     margin: 0;
+}
+#options .submit img{
+    height: 15px;
+    width: 15px;
+    vertical-align: middle;
+    display: none;
+}
+#options .auto-on{
+    background-color: rgb(120, 201, 133);
 }

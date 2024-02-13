@@ -95,14 +95,15 @@
     <section id="main-pane">
         <div id="options">
             <button id="new-game" alt="This will reset your balance, loans, and equipment." class="submit" onclick="newGame(), unsaved()">New Game</button>
-            <button id="save-game" alt="Save Game. When the background of this button is red, you have unsaved content." class="submit" onclick="saveGame()">Save Game</button>
+            <button id="save-game" alt="Save Game. When the background of this button is red, you have unsaved content." class="submit" onclick="saveGame()">Save Game <img src="images/loading-circle.png" id="loading"></button>
+            <button id="auto-save-game" alt="Activate auto saving wich will save the game every two minutes." class="submit auto-off" onclick="autoSave(this)">Auto Save</button>
             <button id="load-game" alt="Load last saved state of game." class="submit" onclick="loadGame()">Load Game</button>
         
         </div>
         <fieldset id="new-job" class="sect">
             <legend>New Job</legend>
             <label for="job-equip">Which Equipment: </label>
-            <select id="job-equip">
+            <select id="job-equip" onchange="changeColor(this)">
                 <option value="back">Backhoe</option>
                 <option value="dozer">Dozer</option>
                 <option value="exca">Excavator</option>
@@ -128,18 +129,19 @@
             </div>
         </fieldset>
         <fieldset id="sell-equip" class="sect custom">
-            <legend>Sell Equipment</legend>
+            <legend>Sell/Buy Equipment</legend>
             <label for="sell-select">Which Equipment: </label>
-            <select id="sell-select" onchange="changeDefault(this.value)">
+            <select id="sell-select" onchange="changeDefaultSell(this), changeColor(this)">
                 <option value="sell-back">Backhoe</option>
                 <option value="sell-dozer">Dozer</option>
                 <option value="sell-exca">Excavator</option>
                 <option value="sell-grade">Grader</option>
                 <option value="sell-scrape">Scraper</option>
             </select><br>
-            <label for="sell-amount">Sell Amount: $</label>
+            <label for="sell-amount">Amount: $</label>
             <input type="number" step="1000" id="sell-amount" value=""><br>
             <button onclick="sellEquip(), unsaved()" class="submit">Sell Equipment</button>
+            <button onclick="buyEquip(), unsaved()" class="submit">Buy Equipment</button>
 
         </fieldset>
         <fieldset id="custom-income" class="sect custom">
