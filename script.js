@@ -628,27 +628,36 @@ function changeDefaultSell(x) {
 }
 
 function changeColor(x){
+    let bGColor;
     switch (x.value){
         case 'back': 
         case 'sell-back':
-            x.style.backgroundColor = 'rgba(229, 185, 9, 0.6)';
+            bGColor = 'rgba(229, 185, 9, 0.8)';
             break;
         case 'dozer': 
         case'sell-dozer':
-            x.style.backgroundColor = 'rgba(107, 133, 72, 0.6)';
+            bGColor = 'rgba(107, 133, 72, 0.6)';
             break;
         case 'exca': 
         case 'sell-exca':
-            x.style.backgroundColor = 'rgba(197, 43, 31, 0.6)';
+            bGColor = 'rgba(197, 43, 31, 0.5)';
             break;
         case 'grade': 
         case 'sell-grade':
-            x.style.backgroundColor = 'rgba(69, 122, 166, 0.6)';
+            bGColor = 'rgba(69, 122, 166, 0.6)';
             break;
         case 'scrape': 
         case 'sell-scrape':
-            x.style.backgroundColor = 'rgba(92, 42, 79, 0.6)';
+            bGColor = 'rgba(92, 42, 79, 0.5)';
             break;
+    }
+    x.style.backgroundColor = bGColor;
+    x.parentNode.style.boxShadow = '0 0 15px ' + bGColor + 'inset';
+    for (let i = 0; i < x.parentNode.getElementsByTagName('input').length; i++){
+        x.parentNode.getElementsByTagName('input')[i].style.backgroundColor = bGColor;
+    }
+    for (let i = 0; i < x.parentNode.getElementsByTagName('button').length; i++){
+        x.parentNode.getElementsByTagName('button')[i].style.backgroundColor = bGColor;
     }
 }
 
@@ -691,7 +700,7 @@ function newGame() {
     document.getElementById('scrape-owned').innerHTML = scraper.amountOwned;
     document.getElementById('money-list').innerHTML = '';
     document.getElementById('sell-select').value = 'sell-back';
-    document.getElementById('sell-select').style.backgroundColor = 'rgba(229, 185, 9, 0.6)';
+    changeColor(document.getElementById('sell-select'));
     document.getElementById('sell-amount').value = 50_000;
     document.getElementById('dice-roll').value = 1;
     document.getElementById('new-amount').value = '';
@@ -699,7 +708,10 @@ function newGame() {
     document.getElementById('cust-inc-amount').value = '';
     document.getElementById('cust-exp-amount').value = '';
     document.getElementById('job-equip').value = 'back';
-    document.getElementById('job-equip').style.backgroundColor = 'rgba(229, 185, 9, 0.6)';
+    changeColor(document.getElementById('job-equip'));
+    if(document.getElementById('auto-save-game').classList.contains('auto-on')){
+        autoSave(document.getElementById('auto-save-game'), false);
+    }
 
     addIncome(100_000, 'Game Start');
 }
@@ -810,21 +822,29 @@ function unsaved() {
     document.getElementById('save-game').style.backgroundColor = unsavedColor;
 }
 let autoInt;
-function autoSave(btn){ 
-    if(btn.classList.contains('auto-off')){
-        btn.classList.remove('auto-off');
-        btn.classList.add('auto-on');
-        autoInt = setInterval(() => {
-            saveGame()
+function autoSave(btn, force){ 
+    clearTimeout(autoInt);
+    if(force){
+        autoInt = setTimeout(() => {
+            saveGame();
             loadAnimation();
-        }, 120000)
-    }else{
-        btn.classList.remove('auto-on');
-        btn.classList.add('auto-off');
-        clearInterval(autoInt)
+        }, 5000)
+    }else if(!force){
+        if(btn.classList.contains('auto-off')){
+            btn.classList.remove('auto-off');
+            btn.classList.add('auto-on');
+            autoInt = setTimeout(() => {
+                saveGame();
+                loadAnimation();
+            }, 5000)
+        }else{
+            btn.classList.remove('auto-on');
+            btn.classList.add('auto-off');
+        }
     }
 }
 function loadAnimation(){
+    clearTimeout(autoInt);
     const sym = document.getElementById('loading');
     sym.style.display = 'inline';
     let e = 0;
@@ -833,6 +853,9 @@ function loadAnimation(){
             clearInterval(int);
             sym.style.display = 'none';
             alertBox('Game Saved');
+            if(document.getElementById('auto-save-game').classList.contains('auto-on')){
+                autoSave(document.getElementById('auto-save-game'), true);
+            }
             e = 0;
         }
         sym.style.rotate = e + 'deg';
