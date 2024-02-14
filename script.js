@@ -828,7 +828,7 @@ function autoSave(btn, force){
         autoInt = setTimeout(() => {
             saveGame();
             loadAnimation();
-        }, 5000)
+        }, 60000)
     }else if(!force){
         if(btn.classList.contains('auto-off')){
             btn.classList.remove('auto-off');
@@ -836,7 +836,7 @@ function autoSave(btn, force){
             autoInt = setTimeout(() => {
                 saveGame();
                 loadAnimation();
-            }, 5000)
+            }, 60000)
         }else{
             btn.classList.remove('auto-on');
             btn.classList.add('auto-off');
