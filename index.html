@@ -140,9 +140,10 @@
             </select><br>
             <label for="sell-amount">Amount: $</label>
             <input type="number" step="1000" id="sell-amount" value=""><br>
-            <button onclick="sellEquip(), unsaved()" class="submit">Sell Equipment</button>
-            <button onclick="buyEquip(), unsaved()" class="submit">Buy Equipment</button>
-
+            <div id="sell-buttons">
+                <button onclick="sellEquip(), unsaved()" class="submit">Sell Equipment</button>
+                <button onclick="buyEquip(), unsaved()" class="submit">Buy Equipment</button>
+            </div>
         </fieldset>
         <fieldset id="custom-income" class="sect custom">
             <legend>Custom Income</legend>

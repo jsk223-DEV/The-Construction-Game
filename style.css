@@ -371,16 +371,16 @@ body {
     font-weight: 550;
 }
 
-#loan .submit {
+#loan .submit,
+#sell-buttons .submit {
     display: inline;
     margin: 0;
 }
-
-#loan-buttons {
+#loan-buttons,
+#sell-buttons {
     display: flex;
-    justify-content: space-between;
-    width: 320px;
-
+    justify-content: space-around;
+    width: 360px;
     height: 35px;
     margin: 23px auto 0 auto;
 }
