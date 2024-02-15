@@ -833,6 +833,7 @@ function autoSave(btn, force){
         if(btn.classList.contains('auto-off')){
             btn.classList.remove('auto-off');
             btn.classList.add('auto-on');
+            btn.setAttribute('alt', 'Unactivate auto saving.');
             autoInt = setTimeout(() => {
                 saveGame();
                 loadAnimation();
@@ -840,6 +841,8 @@ function autoSave(btn, force){
         }else{
             btn.classList.remove('auto-on');
             btn.classList.add('auto-off');
+            btn.setAttribute('alt', 'Activate auto saving wich will save the game once every minute.');
+
         }
     }
 }
